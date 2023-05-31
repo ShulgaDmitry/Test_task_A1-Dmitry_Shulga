@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "test-task-a1-dmitry-shulga"
+version = "0.1.0"
+description = ""
+authors = ["Dmitry Shulga <Shulga.dmitry.16.1992@yandex.by>"]
+readme = "README.md"
+packages = [{include = "test_task_a1_dmitry_shulga"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
