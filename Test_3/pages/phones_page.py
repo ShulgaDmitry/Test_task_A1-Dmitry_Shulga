@@ -15,6 +15,7 @@ log_in_window = (By.CSS_SELECTOR, 'section[class="col-12-section--white col-12-s
 name_mobile = (By.XPATH, '//span[@itemprop="name"]/h1')
 mobile_color = (By.XPATH, '//a[@class="disabled product-color--current product-color"]')
 payment_method = (By.XPATH, '//span[@id="select2-priceBlock_selector_CURRENT_CONTRACT-container"]')
+six_month = (By.CSS_SELECTOR, 'div[class="value"]')
 
 
 class PhonesPage(HomePage):
@@ -37,8 +38,15 @@ class PhonesPage(HomePage):
     def choose_payment_option(self):
         select_mobile = self.find_element(name_mobile)
         select_color = self.find_element(mobile_color)
-        ActionChains(self.chrome_driver).click(self.find_element(select_variant_payment)).send_keys(Keys.ARROW_DOWN).\
-            send_keys(Keys.ARROW_DOWN).send_keys(Keys.ENTER).perform()
+        self.find_element(select_variant_payment).click()
+        list_payments = self.find_elements(six_month)
+        count = 0
+        for payment in list_payments:
+            method = payment.text
+            if method.find("6 мес по") == 0:
+                list_payments[count].click()
+            else:
+                count += 1
         select_method = self.find_element(payment_method)
         print(f'\n Выбран {select_mobile.text} {select_color.text}, вариант оплаты: {select_method.text}')
         ActionChains(self.chrome_driver).click(self.find_element(select_variant_payment)).send_keys(Keys.TAB)\

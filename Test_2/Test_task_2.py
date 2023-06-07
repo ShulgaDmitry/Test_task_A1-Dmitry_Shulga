@@ -13,12 +13,17 @@ class Animal:
 
     def special_command(self):
         print(f"{self.name} is {self.color}")
+
+    def special_sound(self):
         print(f"It says {self.voice}")
 
 
 cow = Animal("Mammal", "ginger", "Mu")
 cow.special_command()
+cow.special_sound()
 cat = Animal("Mammal", "black", "Meow")
 cat.special_command()
+cat.special_sound()
 dog = Animal("Mammal", "white", "Woof")
 dog.special_command()
+dog.special_sound()
